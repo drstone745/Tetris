@@ -7,7 +7,7 @@
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: lightgoldenrodyellow;
+    background-color: dimgray;
 }
 
 .grid div {

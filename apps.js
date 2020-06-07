@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'red',
         'orange',
         'yellow',
-        'green',
+        'lightgreen',
         'cyan',
         'blue',
         'pink',
