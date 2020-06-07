@@ -9,11 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(squares)
     let score = 0
     const colors = [
-        'orange',
         'red',
-        'purple',
+        'orange',
+        'yellow',
         'green',
-        'blue'
+        'cyan',
+        'blue',
+        'pink',
     ]
 
     //the Tetrominoes
@@ -24,7 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width * 2, width * 2 + 1, width * 2 + 2],
     ]
 
+    const lvTetrominoes = [
+        [0, 1, width + 1, width * 2 + 1],
+        [width, width + 1, width + 2, width * 2],
+        [1, width + 1, width * 2 + 1, width * 2 + 2],
+        [width * 2, width * 2 + 1, width * 2 + 2, width + 2],
+    ]
+
     const zTetrominoes = [
+        [1, width, width + 1, width * 2],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+        [1, width, width + 1, width * 2],
+        [width, width + 1, width * 2 + 1, width * 2 + 2],
+    ]
+
+    const sTetrominoes = [
         [0, width, width + 1, width * 2 + 1],
         [width + 1, width + 2, width * 2, width * 2 + 1],
         [0, width, width + 1, width * 2 + 1],
@@ -52,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [width, width + 1, width + 2, width + 3],
     ]
 
-    const theTetrominoes = [lTetrominoes, zTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes]
+    const theTetrominoes = [lTetrominoes, sTetrominoes, zTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes, lvTetrominoes]
 
     let currentPosition = 4
     let currentRotation = 0
