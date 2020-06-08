@@ -3,11 +3,12 @@
 }
 
 .grid{
+    border: 1px solid white;
     width: 200px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
-    background-color: dimgray;
+    background-color: black;
 }
 
 .grid div {
@@ -20,15 +21,29 @@
 }
 
 .mini-grid {
-    margin-left: 50px;
+    border: 1px solid white;
     width: 80px;
-    height: 80px;
+    height: 40px;
     display: flex;
     flex-wrap: wrap;
-    background-color: dimgrey;
+    background-color: black;
 }
 
 .mini-grid div {
     height: 20px;
     width: 20px;
+}
+
+.showNextSquares {
+    height: 40px;
+    width: 80px;
+    margin-left: 50;
+}
+
+body{
+    background-color: black;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: white;
 }

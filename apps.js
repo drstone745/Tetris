@@ -6,52 +6,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const width = 10
     let nextRandom = 0
     let timerId
-    console.log(squares)
     let score = 0
     const colors = [
-        'red',
         'orange',
-        'yellow',
-        'lightgreen',
-        'cyan',
         'blue',
-        'pink',
+        'red',
+        'limegreen',
+        'purple',
+        'yellow',
+        'cyan',
     ]
 
     //the Tetrominoes
-    const lTetrominoes = [
-        [1, width + 1, width * 2 + 1, 2],
-        [width, width + 1, width + 2, width * 2 + 2],
+    const jTetrominoes = [
+        [0, width, width + 1, width + 2],
+        [0, width, width * 2, 1],
+        [0, 1, 2, width + 2],
         [1, width + 1, width * 2 + 1, width * 2],
-        [width, width * 2, width * 2 + 1, width * 2 + 2],
+
     ]
 
-    const lvTetrominoes = [
+    const lTetrominoes = [
+        [width, width + 1, width + 2, 2],
+        [0, width, width * 2, width * 2 + 1],
+        [0, 1, 2, width],
         [0, 1, width + 1, width * 2 + 1],
-        [width * 2, width * 2 + 1, width * 2 + 2, width + 2],
-        [1, width + 1, width * 2 + 1, width * 2 + 2],
-        [width, width + 1, width + 2, width * 2],
     ]
 
     const zTetrominoes = [
+        [0, 1, width + 1, width + 2],
         [1, width, width + 1, width * 2],
-        [width, width + 1, width * 2 + 1, width * 2 + 2],
+        [0, 1, width + 1, width + 2],
         [1, width, width + 1, width * 2],
-        [width, width + 1, width * 2 + 1, width * 2 + 2],
+
     ]
 
     const sTetrominoes = [
+        [1, 2, width, width + 1],
         [0, width, width + 1, width * 2 + 1],
-        [width + 1, width + 2, width * 2, width * 2 + 1],
+        [1, 2, width, width + 1],
         [0, width, width + 1, width * 2 + 1],
-        [width + 1, width + 2, width * 2, width * 2 + 1],
     ]
 
     const tTetrominoes = [
+        [0, 1, 2, width + 1],
+        [1, width, width + 1, width * 2 + 1],
         [1, width, width + 1, width + 2],
         [1, width + 1, width + 2, width * 2 + 1],
-        [width, width + 1, width + 2, width * 2 + 1],
-        [1, width, width + 1, width * 2 + 1]
     ]
 
     const oTetrominoes = [
@@ -62,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     const iTetrominoes = [
+        [0, 1, 2, 3],
         [1, width + 1, width * 2 + 1, width * 3 + 1],
-        [width, width + 1, width + 2, width + 3],
+        [0, 1, 2, 3],
         [1, width + 1, width * 2 + 1, width * 3 + 1],
-        [width, width + 1, width + 2, width + 3],
     ]
 
-    const theTetrominoes = [lTetrominoes, lvTetrominoes, zTetrominoes, sTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes]
+    const theTetrominoes = [jTetrominoes, lTetrominoes, zTetrominoes, sTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //start a new tetromino falling
             random = nextRandom
             nextRandom = Math.floor(Math.random() * theTetrominoes.length)
-            current = theTetrominoes[random][currentRotation]
+            current = theTetrominoes[random][0]
             currentPosition = 4
             draw()
             displayShape()
@@ -166,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //rotate the Tetromino
     function rotate() {
         undraw()
+
         currentRotation++
         //if current Rotation gets to 4, amke it goes back to 0
         if (currentRotation === current.length) {
@@ -182,13 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //const tetrominos without rotations
     const upNextTetrominoes = [
-        [1, displayWidth + 1, displayWidth * 2 + 1, 2], //lTetromino
-        [0, 1, displayWidth + 1, displayWidth * 2 + 1],//lvTetromino
-        [1, displayWidth, displayWidth + 1, displayWidth * 2], //zTetroino
-        [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1], //sTetromino
-        [1, displayWidth, displayWidth + 1, displayWidth + 2], //t Tetromino
+        [0, displayWidth, displayWidth + 1, displayWidth + 2], //lTetromino
+        [displayWidth, displayWidth + 1, displayWidth + 2, 2],//jTetromino
+        [0, 1, displayWidth + 1, displayWidth + 2], //zTetroino
+        [1, 2, displayWidth, displayWidth + 1], //sTetromino
+        [0, 1, 2, displayWidth + 1], //t Tetromino
         [0, 1, displayWidth, displayWidth + 1], //o Tetromino
-        [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1] //iTetromino
+        [0, 1, 2, 3] //iTetromino
     ]
 
     function displayShape() {
@@ -209,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             timerId = null
         } else {
             draw()
-            timerId = setInterval(moveDown, 1000)
+            timerId = setInterval(moveDown, 100)
             nextRandom = Math.floor(Math.random() * theTetrominoes.length)
             displayShape()
         }
@@ -238,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function gameOver() {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-            scoreDisplay.innerHTML = 'END'
+            scoreDisplay.innerHTML = 'Game Over'
             clearInterval(timerId)
         }
     }
