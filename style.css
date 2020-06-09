@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    padding: 10px;
 }
 
 .grid{
@@ -22,6 +23,7 @@
 
 .mini-grid {
     border: 1px solid white;
+    margin-left: 50px;
     width: 80px;
     height: 40px;
     display: flex;
@@ -34,11 +36,6 @@
     width: 20px;
 }
 
-.showNextSquares {
-    height: 40px;
-    width: 80px;
-    margin-left: 50;
-}
 
 body{
     background-color: black;

@@ -18,14 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
 
     //the Tetrominoes
-    const jTetrominoes = [
-        [0, width, width + 1, width + 2],
-        [0, width, width * 2, 1],
-        [0, 1, 2, width + 2],
-        [1, width + 1, width * 2 + 1, width * 2],
-
-    ]
-
     const lTetrominoes = [
         [width, width + 1, width + 2, 2],
         [0, width, width * 2, width * 2 + 1],
@@ -33,12 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 1, width + 1, width * 2 + 1],
     ]
 
+    const jTetrominoes = [
+        [0, width, width + 1, width + 2],
+        [0, width, width * 2, 1],
+        [0, 1, 2, width + 2],
+        [1, width + 1, width * 2 + 1, width * 2],
+    ]
+
     const zTetrominoes = [
         [0, 1, width + 1, width + 2],
         [1, width, width + 1, width * 2],
         [0, 1, width + 1, width + 2],
         [1, width, width + 1, width * 2],
-
     ]
 
     const sTetrominoes = [
@@ -69,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [1, width + 1, width * 2 + 1, width * 3 + 1],
     ]
 
-    const theTetrominoes = [jTetrominoes, lTetrominoes, zTetrominoes, sTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes]
+    const theTetrominoes = [lTetrominoes, jTetrominoes, zTetrominoes, sTetrominoes, tTetrominoes, oTetrominoes, iTetrominoes]
 
     let currentPosition = 4
     let currentRotation = 0
@@ -111,6 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+
     document.addEventListener('keyup', control)
 
     function moveDown() {
@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         draw()
         freeze()
     }
+
 
 
     //freeze function 
@@ -184,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //const tetrominos without rotations
     const upNextTetrominoes = [
-        [0, displayWidth, displayWidth + 1, displayWidth + 2], //lTetromino
-        [displayWidth, displayWidth + 1, displayWidth + 2, 2],//jTetromino
+        [displayWidth, displayWidth + 1, displayWidth + 2, 2],//lTetromino
+        [0, displayWidth, displayWidth + 1, displayWidth + 2], //jTetromino
         [0, 1, displayWidth + 1, displayWidth + 2], //zTetroino
         [1, 2, displayWidth, displayWidth + 1], //sTetromino
         [0, 1, 2, displayWidth + 1], //t Tetromino
